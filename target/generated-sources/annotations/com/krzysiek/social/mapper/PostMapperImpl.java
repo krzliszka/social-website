@@ -11,11 +11,11 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-03-26T02:07:21+0100",
+    date = "2021-03-28T01:17:20+0100",
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 11.0.7 (Amazon.com Inc.)"
 )
 @Component
-public class PostMapperImpl implements PostMapper {
+public class PostMapperImpl extends PostMapper {
 
     @Override
     public Post map(PostRequest postRequest, Subsocial subsocial, User user) {
@@ -33,11 +33,10 @@ public class PostMapperImpl implements PostMapper {
         }
         if ( subsocial != null ) {
             post.subsocial( subsocial );
-        }
-        if ( user != null ) {
-            post.user( user );
+            post.user( subsocial.getUser() );
         }
         post.createdDate( java.time.Instant.now() );
+        post.voteCount( 0 );
 
         return post.build();
     }
@@ -56,6 +55,10 @@ public class PostMapperImpl implements PostMapper {
         postResponse.setPostName( post.getPostName() );
         postResponse.setUrl( post.getUrl() );
         postResponse.setDescription( post.getDescription() );
+        postResponse.setVoteCount( post.getVoteCount() );
+
+        postResponse.setDuration( getDuration(post) );
+        postResponse.setCommentCount( commentCount(post) );
 
         return postResponse;
     }
