@@ -1,6 +1,6 @@
 # Social website (Reddit)
 
-### Web application built with Java 11, Spring Boot, Spring Security, Spring Data JPA, Spring MVC and MySQL on the backend and Angular with Bootstrap framework on the frontend side. A *lombok* was used to connect databases.
+### Web application built with Java 11, Spring Boot, Spring Security, Spring Data JPA, Spring MVC and MySQL on the backend and Angular with Bootstrap framework on the frontend side. A *lombok* was used to create and connect database tables.
 ---
 ![Alt text](/img/2.png?raw=true )
 
